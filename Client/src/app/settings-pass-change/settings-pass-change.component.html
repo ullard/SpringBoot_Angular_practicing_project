@@ -1,0 +1,46 @@
+<div class="center" [formGroup]="passwordUpdateForm">
+	<h1>Password Change</h1>
+	
+	<!-- current password -->
+	<div class="col-sm-12 form-group">
+		<label>Current Password</label> <input class="form-control" type="password" formControlName="oldPassword"/>
+	</div>
+	
+	<div *ngIf="oldPassword.invalid && (oldPassword.dirty || oldPassword.touched)" class="alert alert-danger">
+		<div *ngIf="oldPassword.errors.required">
+		    Password is required.
+		 </div>
+	</div>
+	
+	<!-- new password -->
+	<div class="col-sm-12 form-group">
+		<label>Password</label> <input  class="form-control" type="password" formControlName="newPassword"/>
+	</div>
+
+	<div *ngIf="newPassword.invalid && (newPassword.dirty || newPassword.touched)" class="alert alert-danger">
+		<div *ngIf="newPassword.errors.required">
+		    Password is required.
+		 </div>
+		 <div *ngIf="newPassword.errors.pattern">
+		    Password must be 8-16 characters long, must contains at least one uppercase letter, one lowercase letter, one number and one special character.
+		 </div>
+	</div>
+	
+	<!-- matching password -->
+	<div class="col-sm-12 form-group">
+		<label>Matching Password</label> <input  class="form-control" type="password" formControlName="matchingPassword"/>
+	</div>
+
+	<div *ngIf="matchingPassword.invalid && (matchingPassword.dirty || matchingPassword.touched)" class="alert alert-danger">
+		<div *ngIf="matchingPassword.errors.required">
+		  Password is required.
+		</div>
+		<div *ngIf="matchingPassword.errors.mustMatch">
+		  Passwords must match.
+		</div>
+	</div>	
+
+	<div class="col-sm-12">
+		<button class="btn btn-primary pull-right" (click)="updatePass()" type="submit">Submit</button>
+	</div>
+</div>

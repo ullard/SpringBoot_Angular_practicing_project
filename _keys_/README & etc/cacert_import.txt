@@ -1,0 +1,7 @@
+sudo keytool -importcert -keystore /Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib/security/cacerts -storepass changeit -file /Volumes/MyPassportU/Others/Folders/STS_Workspace_OSX/Diploma_project/_keys_/auth.crt -alias authcert
+
+
+
+authcert
+resourcecert
+clientcert

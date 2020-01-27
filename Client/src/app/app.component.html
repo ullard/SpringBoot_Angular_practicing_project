@@ -1,0 +1,30 @@
+<nav class="navbar navbar-default">
+	
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Application</a>
+		</div>
+			
+		<div class="nav navbar-nav navbar-centered">
+			<span class="glyphicon glyphicon-search"></span>
+			<input type="text" placeholder="Search.." (input)="onSearchChange($event.target.value)" [(ngModel)]="search">
+			<ul class="search-dropdown" [hidden]="!nonEmpty">
+				<li *ngFor="let user of searchResult">
+					<a (click)="searchNavigate(user.username)">{{user.name}} - ({{user.username}})</a>
+					<hr/>
+				</li>
+			</ul>
+		</div>
+		
+		<ul class="nav navbar-nav navbar-right" [hidden]="!authenticated">
+			<li><a (click)="profile()"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+      		<li><a routerLink="/settings"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+      		<li><a (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+		</ul>
+		
+		<ul class="nav navbar-nav navbar-right" [hidden]="authenticated">
+			<li><a routerLink="/registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      		<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		</ul>
+		
+</nav>
+<router-outlet></router-outlet>
